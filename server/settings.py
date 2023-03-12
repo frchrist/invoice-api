@@ -1,6 +1,8 @@
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,8 +18,6 @@ SECRET_KEY = 'django-insecure-t*m9i%xsb4^m-u8c!sjbpkt+&budqb++zg_y9&e39=dh6%+1sw
 DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', "localhost"]
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "corsheaders",
     'rest_framework',
+
+
     "api",
 ]
 
@@ -79,7 +81,7 @@ DATABASES = {
         "HOST" : "db.rekmwpkdltqqyhyiumob.supabase.co",
         "PORT" : 5432,
         "USER" : "postgres",
-        "PASSWORD" : os.environ.get("INVOICE_DB"),
+        "PASSWORD" : os.environ["INVOICE_DB"],
 
     }
 
