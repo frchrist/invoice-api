@@ -81,7 +81,7 @@ DATABASES = {
         "HOST" : "db.rekmwpkdltqqyhyiumob.supabase.co",
         "PORT" : 5432,
         "USER" : "postgres",
-        "PASSWORD" : os.environ["INVOICE_DB"],
+        "PASSWORD" : os.getenv("INVOICE_DB"),
 
     }
 
