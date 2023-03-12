@@ -9,6 +9,7 @@
     {
       "src": "/(.*)",
       "dest": "server/wsgi.py"
-    }
+    },
+    
   ]
 }

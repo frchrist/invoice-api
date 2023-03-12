@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 from datetime import date, datetime
 from django.db.models.signals import pre_save
 # Create your models here.
@@ -7,9 +8,10 @@ from django.db.models.signals import pre_save
 
 
 class Product(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=225)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    # quantity = models.IntegerField(helper_text="Quantité en Stock")
+    unite = models.CharField(max_length=50)
     is_deleted = models.BooleanField(default=False)
     description = models.TextField(null=True, blank=True, default="")
 
@@ -18,6 +20,7 @@ class Product(models.Model):
         return self.name
 
 class ProductInInvoice(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='in_invoice')
     quantity = models.IntegerField()
 
@@ -27,10 +30,11 @@ class ProductInInvoice(models.Model):
 
 
 
-
 class Invoice(models.Model):
-    client = models.CharField(max_length=25, default="")
-    ref = models.CharField(max_length=20, default="")
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    client = models.CharField(max_length=25)
+    date = models.DateTimeField()
+    ref = models.CharField(max_length=20, default="", blank=True)
    
     type = models.CharField(choices=(("pro forma", "pro forma"), ("facture", "facture")),
                             max_length=15, default="facture")
@@ -43,25 +47,16 @@ class Invoice(models.Model):
     @property
     def amount(self):
         return sum([int(invoice_product.product.price) * int(invoice_product.quantity) for invoice_product in self.product_in_invoice.all()])
-        # sum_ = 0
-        # for invoice_product in self.article_in_invoice.all():
-        #     sum_ += int(invoice_product.product.price) * int(invoice_product.quantity)
 
-
-
-# class InvoiceProduct(models.Model):
-#     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, related_name='article_in_invoice')
-#     product = models.ForeignKey(ProductInInvoice, on_delete=models.CASCADE, related_name='invoice_products')
-#     # quantity = models.IntegerField()
 
     
 
 
 def create_invoice_number(sender, instance, *args,**kwargs) -> None:
-    prefix = f"KG/{datetime.now().year}/"
-    FIX : int = 1000
-    count = sender.objects.count() + FIX
-    number : str = f"{prefix}{count}"
+    prefix = f"#KG-"
+    # FIX : int = 1000
+    count = sender.objects.count()
+    number : str = f"{prefix}IV{str(count).zfill(5)}/YR{datetime.now().year}"
     instance.ref = number
 
 

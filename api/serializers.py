@@ -49,7 +49,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
         invoice = Invoice.objects.create(**validated_data)
         for product_data in products_data:
             pro_data = product_data.get("product")
-            pro = Product.objects.get(name=pro_data.get("name"))
+            pro = Product.objects.get(name=pro_data.get("name"), is_deleted=False)
             product = ProductInInvoice.objects.create(product=pro, quantity=product_data.get("quantity"))
             # quantity = product_data.get('quantity', 1)
             invoice.product_in_invoice.add(product)

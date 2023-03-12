@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from rest_framework import mixins
 from rest_framework import generics
 from rest_framework import viewsets
+from rest_framework import status
 from rest_framework import renderers
 from .process import html_to_pdf
 
@@ -13,12 +14,18 @@ from api.serializers import InvoiceSerializer, ProductSerializer
 class ProductViewSet(viewsets.ModelViewSet):
     # renderer_classes = [renderers.JSONRenderer]
     
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(is_deleted=False)
     serializer_class = ProductSerializer
+    
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.is_deleted= True
+        instance.save()
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
 
 
 class InvoiceList(mixins.ListModelMixin,mixins.CreateModelMixin, generics.GenericAPIView):
-    queryset  = Invoice.objects.all()
+    queryset  = Invoice.objects.filter(is_deleted=False)
     serializer_class = InvoiceSerializer
 
     def get(self, request, *args, **kwargs):
@@ -27,8 +34,14 @@ class InvoiceList(mixins.ListModelMixin,mixins.CreateModelMixin, generics.Generi
 
 class InvoiceViewSet(viewsets.ModelViewSet):
     # renderer_classes = [renderers.JSONRenderer]
-    queryset = Invoice.objects.all()
+    queryset = Invoice.objects.filter(is_deleted=False)
     serializer_class = InvoiceSerializer
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.is_deleted= True
+        instance.save()
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
 
     # def get_queryset(self):
     #     genres = Invoice.objects.get(pk=self.kwargs.get('pk', None))
