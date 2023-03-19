@@ -9,8 +9,8 @@ class ProductSerializer(serializers.ModelSerializer):
 class WriteProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ("id", "name", "price", "description")
-        read_only_fields = ("price", "description")
+        fields = ("id", "name","unite", "price", "description")
+        read_only_fields = ("price", "description","unite")
 
 
 class ProductInInvoiceSerializer(serializers.ModelSerializer):
