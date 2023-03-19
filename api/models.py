@@ -56,7 +56,7 @@ def create_invoice_number(sender, instance, *args,**kwargs) -> None:
     prefix = f"KG-"
     # FIX : int = 1000
     count = sender.objects.count()
-    number : str = f"{prefix}{str(count).zfill(3)}"
+    number : str = f"{prefix}{str(count).zfill(4)}"
     instance.ref = number
 
 
