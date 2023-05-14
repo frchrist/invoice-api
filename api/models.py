@@ -58,7 +58,8 @@ def create_invoice_number(sender, instance, *args,**kwargs) -> None:
     # FIX : int = 1000
     count = sender.objects.count() + 70
     number : str = f"{prefix}{str(count).zfill(4)}/{postfix}"
-    instance.ref = number
+    if len(instance.ref) == 0:
+        instance.ref = number
 
 
 
