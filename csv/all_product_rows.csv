@@ -1,0 +1,286 @@
+name,price,unite,description,is_deleted
+Abaise langue,3000,B/100,consommables,false
+Aiguille de prélevement,2000,B/100,consommables,false
+Alcool 95°,7000,B/5L,consommables,false
+Alcool 95°,30000,B/25L,consommables,false
+Alèze,10000,UNITE,consommables,false
+Alèze,1100,UNITE,consommables,false
+Aspirateur double Valves,25000,UNITE,consommables,false
+Balance éléctronique,15000,UNITE,consommables,false
+Balance mécanique(greenlife),15000,UNITE,consommables,false
+Balance mécanique(130KG),12000,UNITE,consommables,false
+Balance mécanique(150KG),30000,UNITE,consommables,false
+Balance pèse Personne,10000,UNITE,consommables,false
+Balance SECA (150Kg),35000,UNITE,consommables,false
+Balance SECA (180Kg),75000,UNITE,consommables,false
+Bande velpo 10cm*4.5,3500,S/12,consommables,false
+Bande velpo 15cm*4.5,4500,S/12,consommables,false
+Bande velpo 7.5cm*4.5,3000,S/12,consommables,false
+Bassin de lit(inox),30000,UNITE,consommables,false
+Bassin de lit(plastique),18000,UNITE,consommables,false
+Bequille,30000,PAIRE,consommables,false
+Boite à petite chirurgie (12 éléments),27000,UNITE,consommables,false
+Boite d'accouchement (12 éléments),27000,UNITE,consommables,false
+Bonnet Medical,6000,B/100,consommables,false
+Carnet de santé,2000,B/50,consommables,false
+Clamp cordon,6500,B/100,consommables,false
+Compress (ROULEAU),9000,UNITE,consommables,false
+Compress stérille,700,B/10,consommables,false
+Cotton hydrophyle 500g,2500,UNITE,consommables,false
+Eau distillée,15000,5(Bidon),consommables,false
+Eau distillée,15000,5(Bidon),consommables,false
+Epiveine(21g; 23g) verte,3500,B/100,consommables,false
+Fauteuil roulant avec pot,205000,UNITE,consommables,false
+Fauteuil roulant sans pot,190000,UNITE,consommables,false
+Fil a suture non résorbable(NYLON),4500,B/12,consommables,false
+Fil a suture non résorbable(CATGUT),6500,B/12,consommables,false
+Gants d'examen poudré(Vrac),5000,B/100,consommables,false
+Gants chirurgical(sterile),7500,B/50,consommables,false
+Gants Automatique,1500,UNITE,consommables,false
+Haricot 25 cm,8000,UNITE,consommables,false
+Haricot 31 cm,10000,UNITE,consommables,false
+Intra flon ou cathéter (20 G -22-24G),15000,B/100,consommables,false
+Lame de stérilisation du bloc,68000,UNITE,consommables,false
+Lacette,2000,B/100,consommables,false
+Lit d'accouchement,450000,UNITE,consommables,false
+Lit d'hospitalisation,220000,UNITE,consommables,false
+Lit Gynéco,550000,UNITE,consommables,false
+Lunette d'oxygène,265000,UNITE,consommables,false
+Masque d'oxygène Adulte L,4000,UNITE,consommables,false
+Oxymètre(saturomêtre),15000,UNITE,consommables,false
+Papier ECG (112mm * 27cm) : 8pistes,16000,UNITE,consommables,false
+Papier ECG (210mm * 30cm) : 12pistes,24000,UNITE,consommables,false
+Papier ECG 2pistes,4800,UNITE,consommables,false
+Papier Echographie types 1,14000,UNITE,consommables,false
+Papier Echographie types 5,15000,UNITE,consommables,false
+Papier imprimante URIT GM,9500,UNITE,consommables,false
+Papier imprimante URIT PM,7600,UNITE,consommables,false
+Perfuseur avec aiguille,2250,S/25,consommables,false
+Perfuseur avec epiveine,2250,S/25,consommables,false
+Pipette Pasteur,18500,B/500,consommables,false
+Plateau couplet avec ciseaux,30000,UNITE,consommables,false
+Poche à sang,8500,B/5,consommables,false
+Poche à urine,3000,B/10,consommables,false
+Poire pour tensiometre,4000,UNITE,consommables,false
+Potence inox(porte serum),25000,UNITE,consommables,false
+Poubelle 12 litres inox,65000,UNITE,consommables,false
+Poubelle 20 litres inox,85000,UNITE,consommables,false
+Poubelle plastique 10 litres,16000,UNITE,consommables,false
+Sachet pharmacie,0,UNITE,consommables,false
+Seringue 10cc,4000,B/100,consommables,false
+Seringue 2cc,3000,B/100,consommables,false
+Seringue 5cc,3000,B/100,consommables,false
+Seringue a insulin 1cc,6000,B/100,consommables,false
+Soude d'incabation(18),8000,B/50,consommables,false
+Soude luminaire,7500,B/10,consommables,false
+Soude nasogastrique,30000,B/100,consommables,false
+Soude vasicale,50000,B/100,consommables,false
+Sparadrap 18cm*5m,3500,UNITE,consommables,false
+Speculum inox,5000,UNITE,consommables,false
+Speculum plastique moyen,30000,C/100,consommables,false
+Stethoscope de pinard,3000,UNITE,consommables,false
+Stethoscope double foyer,15000,UNITE,consommables,false
+Stethoscope littman,15000,UNITE,consommables,false
+Stethoscope professionnel,15000,UNITE,consommables,false
+Stethoscope simple,4000,UNITE,consommables,false
+Tensiometre digital bras,20000,UNITE,consommables,false
+Tensiometre electronique bracelet,20000,UNITE,consommables,false
+Tensiometre mécanique + Stethoscophe(greenlife),15000,UNITE,consommables,false
+Tensiometre mécanique + Stethoscophe(JACTERMAC),13000,UNITE,consommables,false
+Tensiometre mécanique YUWELL,18000,UNITE,consommables,false
+Tensiometre mercure,25000,UNITE,consommables,false
+Tensiometre splenger classic,120000,UNITE,consommables,false
+Tensiometre splenger hospital,9000,UNITE,consommables,false
+Tensiometre digital(électronque),1800,UNITE,consommables,false
+Tensiometre mercure,8500,B/12,consommables,false
+Transfuseur,7000,B/25,consommables,false
+Bandelette URIT-H12(Taux D'hémoglobine),14000,B/50,Test rapide,false
+Bandelette Accu-Check Active,13000,B/50,Test rapide,false
+Bandelette One Touch Ultra,14000,B/50,Test rapide,false
+Bandelette Urit(G26),14000,B/50,Test rapide,false
+Hemocue Microcuvette 301,27800,B/50,Test rapide,false
+Microcuvette 501,27800,B/50,Test rapide,false
+TDR malaria,6500,B/25,Test rapide,false
+Test COVID(Kit),8000,UNITE,Test rapide,false
+Test de Grossesse(HCG Bandelette),75000,B/10,Test rapide,false
+Test de Grossesse(HCG cassette),10000,B/25,Test rapide,false
+Test de Grossesse JACTERMAC (urine & sérum),7000,B/50,Test rapide,false
+Test de HCV (hépatite C),25000,B/25,Test rapide,false
+Test rapid antigen HBS Ag (hépatite B) bandelette,10000,B/50,Test rapide,false
+Test rapid VIH-Kit (Détermine),45000,B/100,Test rapide,false
+Test rapid WIDAL ET FELIX (cassette),50000,B/25,Test rapide,false
+Test syphilis TPHA Bandelettes,15000,B/50,Test rapide,false
+Test syphilis bandelettes LABACON,25000,B/50,Test rapide,false
+URIT 10V Bandelettes (10 parametres),14000,B/100,Test rapide,false
+URIT 2V Bandelettes (2 parametres),6000,B/100,Test rapide,false
+Appareil URIT-12(Taux d'hémoglobine),10000,UNITE,Materiels et consommables de laboratoire,false
+Automate de biochime Genrui GS 300,7500000,UNITE,Materiels et consommables de laboratoire,false
+Centrigeuse 12 trous,210000,UNITE,Materiels et consommables de laboratoire,false
+Centrigeuse 6 trous,90000,UNITE,Materiels et consommables de laboratoire,false
+Centrigeuse 8 trous,190000,UNITE,Materiels et consommables de laboratoire,false
+Concentrateur d'oxygène GM,1250000,UNITE,Materiels et consommables de laboratoire,false
+Concentrateur d'oxygène PM,700000,UNITE,Materiels et consommables de laboratoire,false
+Doppler foetal,85000,UNITE,Materiels et consommables de laboratoire,false
+Echographe (Portable) blanc noir,30000000,UNITE,Materiels et consommables de laboratoire,false
+Echographe sur pied couleur avec imprimante,145000000,UNITE,Materiels et consommables de laboratoire,false
+Echographe couleur (Portable),4500000,UNITE,Materiels et consommables de laboratoire,false
+Electrocardiogramme ECG (3pistes) couleur,1350000,UNITE,Materiels et consommables de laboratoire,false
+Electrocardiogramme ECG (3pistes) blanc noir,950000,UNITE,Materiels et consommables de laboratoire,false
+Glucomètre ACCU-CHEK Active,25000,UNITE,Materiels et consommables de laboratoire,false
+Glucomètre One Touch Ultra,35000,UNITE,Materiels et consommables de laboratoire,false
+Glucomêtre urit G26,35000,UNITE,Materiels et consommables de laboratoire,false
+Hemocue 201,280000,UNITE,Materiels et consommables de laboratoire,false
+Hemocue 301,28000,UNITE,Materiels et consommables de laboratoire,false
+Laryngoscope,125000,UNITE,Materiels et consommables de laboratoire,false
+Microscope Binoculaire (Olympus),350000,UNITE,Materiels et consommables de laboratoire,false
+Microscope Trinocculaire Micros,350000,UNITE,Materiels et consommables de laboratoire,false
+Nebulisation,270000,UNITE,Materiels et consommables de laboratoire,false
+Otoscope,105000,UNITE,Materiels et consommables de laboratoire,false
+Table d'anesthésie,17850000,UNITE,Materiels et consommables de laboratoire,false
+Table opération,4500000,UNITE,Materiels et consommables de laboratoire,false
+Aiguile Vaccutainer(23g*11/14)21g,6000,B/100,Les produits de laboratiore,false
+Bouchon Blue,23000,B/2000,Les produits de laboratiore,false
+Bouchon de Tube Sec,10000,B/1000,Les produits de laboratiore,false
+ECBU Pour Selles,3000,S/25,Les produits de laboratiore,false
+ECBU Pour Urines,3000,S/25,Les produits de laboratiore,false
+Ecouvillon Sterile,7500,B/100,Les produits de laboratiore,false
+Embouts Blanc,10000,B/1000,Les produits de laboratiore,false
+Embouts Bleu,6000,B/500,Les produits de laboratiore,false
+Embouts Jaune,6500,B/1000,Les produits de laboratiore,false
+Gel Echo,11000,5l,Les produits de laboratiore,false
+Gel Ultra Son,9000,B/100,Les produits de laboratiore,false
+Giemsa,20000,500ml,Les produits de laboratiore,false
+Giemsa,40000,1ml,Les produits de laboratiore,false
+Huile à Immersion,25000,250ml,Les produits de laboratiore,false
+Lame Bistouri (22;25),5000,250ml,Les produits de laboratiore,false
+Lame Porte Objet,2000,P/72,Les produits de laboratiore,false
+Lamelle Couvre Object(22*22Ml),15000,B/1000,Les produits de laboratiore,false
+Solution Turk,14000,UNITE,Les produits de laboratiore,false
+Tube à Hémolyse,12000,P/500,Les produits de laboratiore,false
+Tube EDTA (Violet) 5ml,5500,B/100,Les produits de laboratiore,false
+Tube Sec (rouge) 5ml,5500,B/100,Les produits de laboratiore,false
+SERUM RINGER LACTATE 500ML,13000,C/30,Les solutions,false
+SERUM GLUCOSE 5%;10%;250ML,22000,C/60,Les solutions,false
+SERUM GLUCOSE 5%;10%;500ML,13000,C/30,Les solutions,false
+SERUM SALE 500ML,13000,C/30,Les solutions,false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

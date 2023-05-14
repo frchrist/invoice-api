@@ -10,7 +10,7 @@ from django.db.models.signals import pre_save
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=225)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    price = models.DecimalField(max_digits=12, decimal_places=2)
     unite = models.CharField(max_length=50)
     is_deleted = models.BooleanField(default=False)
     description = models.TextField(null=True, blank=True, default="")
