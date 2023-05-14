@@ -13,5 +13,4 @@ router.register("invoice",InvoiceViewSet)
 
 urlpatterns = [ 
     path("", include(router.urls)),
-    path("ivs", InvoiceList.as_view(), name="ivs")
 ] 

@@ -16,6 +16,7 @@ SECRET_KEY = 'django-insecure-t*m9i%xsb4^m-u8c!sjbpkt+&budqb++zg_y9&e39=dh6%+1sw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
+#DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', "localhost"]
 # Application definition
@@ -70,21 +71,20 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-
-    "default" : {
-        "ENGINE" : "django.db.backends.postgresql_psycopg2",
-        "NAME" : "postgres",
-        "HOST" : "db.rekmwpkdltqqyhyiumob.supabase.co",
-        "PORT" : 5432,
-        "USER" : "postgres",
-        "PASSWORD" : os.getenv("INVOICE_DB"),
-
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'kgb.sqlite3',
     }
 
+    # "default" : {
+    #     "ENGINE" : "django.db.backends.postgresql_psycopg2",
+    #     "NAME" : "postgres",
+    #     "HOST" : "db.rekmwpkdltqqyhyiumob.supabase.co",
+    #     "PORT" : 5432,
+    #     "USER" : "postgres",
+    #     "PASSWORD" : os.getenv("INVOICE_DB"),
+
+    # }
 }
 
 
@@ -136,11 +136,22 @@ REST_FRAMEWORK = {
     )
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",
-    "https://kgb-invoice.vercel.app",
-    os.getenv("PRODUCTION_DOMAIN"),
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:3000",
+#     "https://kgb-invoice.vercel.app",
+#     os.getenv("PRODUCTION_DOMAIN"),
+# ]
 
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
+
+
+if DEBUG == "False":
+    DATABASES["default"] = {
+                            "ENGINE" : "django.db.backends.postgresql_psycopg2",
+                            "NAME" : "uznfilrm",
+                            "HOST" : "drona.db.elephantsql.com",
+                            "USER" : "uznfilrm",
+                            "PASSWORD" : os.getenv("INVOICE_DB"),
+                        }

@@ -53,10 +53,11 @@ class Invoice(models.Model):
 
 
 def create_invoice_number(sender, instance, *args,**kwargs) -> None:
-    prefix = f"KG-"
+    prefix = f"KGB-"
+    postfix = datetime.now().year % 100
     # FIX : int = 1000
-    count = sender.objects.count()
-    number : str = f"{prefix}{str(count).zfill(4)}"
+    count = sender.objects.count() + 70
+    number : str = f"{prefix}{str(count).zfill(4)}/{postfix}"
     instance.ref = number
 
 
