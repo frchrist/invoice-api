@@ -44,6 +44,7 @@ class PostInvoiceSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     ref = serializers.ReadOnlyField()
     date = serializers.DateTimeField()
+    created_at = serializers.ReadOnlyField()
     is_deleted = serializers.ReadOnlyField()
 
     def create(self, validated_data):
@@ -69,6 +70,7 @@ class InvoiceSerializer(serializers.Serializer):
     amount = serializers.ReadOnlyField()
     ref = serializers.ReadOnlyField()
     date = serializers.DateTimeField()
+    created_at = serializers.ReadOnlyField()
     is_deleted = serializers.ReadOnlyField()
 
 

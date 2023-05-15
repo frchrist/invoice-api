@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from datetime import date, datetime
+from django.utils import timezone
 from django.db.models.signals import pre_save
 # Create your models here.
 
@@ -34,6 +35,7 @@ class Invoice(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     client = models.CharField(max_length=25)
     date = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
     ref = models.CharField(max_length=20, default="", blank=True)
    
     type = models.CharField(choices=(("pro forma", "pro forma"), ("facture", "facture")),

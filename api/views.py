@@ -9,12 +9,24 @@ from rest_framework.response import Response
 
 from api.models import Invoice, Product
 from api.serializers import InvoiceSerializer, ProductSerializer,PostInvoiceSerializer
+PER_PAGES = 12
+class InvoicePaginateAPIView(APIView):
+    def get(self, request,page, format=None):
+        try:
+            start = (abs(int(page)) * PER_PAGES) - PER_PAGES
+            end = abs(int(page)) * PER_PAGES
+        except:
+            return Http404
+        invoices = Invoice.objects.filter(is_deleted=False).order_by("-created_at")[start:end]
+        ser = InvoiceSerializer(invoices, many=True)
+
+        return Response(ser.data)
 
 
 
 class InvoiceAPIView(APIView):
     def get(self, request, format=None):
-        invoices = Invoice.objects.filter(is_deleted=False).order_by("-date")
+        invoices = Invoice.objects.filter(is_deleted=False).order_by("-created_at")
         ser = InvoiceSerializer(invoices, many=True)
 
         return Response(ser.data)
