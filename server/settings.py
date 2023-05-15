@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-t*m9i%xsb4^m-u8c!sjbpkt+&budqb++zg_y9&e39=dh6%+1sw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
-# DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', "localhost"]
 # Application definition
@@ -130,14 +130,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    )
-}
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
+    "http://localhost:3000",
     "https://kgb-invoice.vercel.app",
     os.getenv("PRODUCTION_DOMAIN"),
 ]
@@ -156,3 +152,10 @@ if DEBUG == "False":
                             "USER" : "uznfilrm",
                             "PASSWORD" : os.getenv("INVOICE_DB"),
                         }
+
+    REST_FRAMEWORK = {
+        'DEFAULT_RENDERER_CLASSES': (
+            'rest_framework.renderers.JSONRenderer',
+            )
+        }
+

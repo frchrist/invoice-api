@@ -23,12 +23,13 @@ class Command(BaseCommand):
 			for row in reader:
 				if row["is_deleted"] == 'false':
 					try:
-						pr  = Product.objects.create(name=row.get("name"), price=row.get("price"), description=row.get("description"))
+						pr  = Product.objects.create(name=row.get("name"),
+							price=row.get("price"), unite=row.get("unite"),description=row.get("description"))
 						pr.save()
 					except:
 						print(row)
 						sys.exit(0)
 					try:
-						print(f"[+] {pr.pk}")
+						print(f"saving[+] {pr.pk} - {pr.name} - {pr.unite}")
 					except:
 						print("ID Failed")

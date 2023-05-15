@@ -1,13 +1,54 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from rest_framework import mixins
 from rest_framework import generics
-from rest_framework import viewsets
+from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework import viewsets
 from rest_framework.response import Response
 
 from api.models import Invoice, Product
-from api.serializers import InvoiceSerializer, ProductSerializer
+from api.serializers import InvoiceSerializer, ProductSerializer,PostInvoiceSerializer
+
+
+
+class InvoiceAPIView(APIView):
+    def get(self, request, format=None):
+        invoices = Invoice.objects.filter(is_deleted=False).order_by("-date")
+        ser = InvoiceSerializer(invoices, many=True)
+
+        return Response(ser.data)
+
+    def post(self,request,*args,**kwargs):
+        ser  = PostInvoiceSerializer(data=request.data)
+        if ser.is_valid():
+            ser.save()
+            return Response(ser.data, 201)
+        else:
+            return Response(ser.errors, 400)
+
+       
+
+
+class InvoiceDetailAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return Invoice.objects.get(pk=pk)
+        except Invoice.DoesNotExist:
+            raise 
+
+    def get(self, request, pk, *args,**kwargs):
+        invoice = self.get_object(pk)
+        serializer = InvoiceSerializer(invoice)
+        return Response(serializer.data)
+
+    def delete(self, request, pk, *args,**kwargs):
+        invoice = self.get_object(pk)
+        invoice.is_deleted = True
+        invoice.save()
+        return Response({}, status.HTTP_204_NO_CONTENT)
+
+
 
 
 class ProductViewSet(viewsets.ModelViewSet):
@@ -23,62 +64,3 @@ class ProductViewSet(viewsets.ModelViewSet):
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
 
-class InvoiceList(mixins.ListModelMixin,mixins.CreateModelMixin, generics.GenericAPIView):
-    queryset  = Invoice.objects.filter(is_deleted=False)
-    serializer_class = InvoiceSerializer
-
-    def get(self, request, *args, **kwargs):
-        return self.list(request, 
-                        args, kwargs)
-
-class InvoiceViewSet(viewsets.ModelViewSet):
-    # renderer_classes = [renderers.JSONRenderer]
-    queryset = Invoice.objects.filter(is_deleted=False)
-    serializer_class = InvoiceSerializer
-
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        instance.is_deleted= True
-        instance.save()
-        return Response({}, status=status.HTTP_204_NO_CONTENT)
-
-    # def get_queryset(self):
-    #     genres = Invoice.objects.get(pk=self.kwargs.get('pk', None))
-    #     movies = Movie.objects.filter(genres=genres)
-    #     return movies
-
-
-
-
-# Create your views here.
-
-# class invoiceAPIView(generics.RetrieveAPIView):
-#     def get(self, request, *args, **kwargs):
-#         pdf =  html_to_pdf("api/invoice.html")
-#         return HttpResponse(pdf, content_type="application/pdf")
-
-
-
-# class InvoiceList(mixins.ListModelMixin,mixins.CreateModelMixin, generics.GenericAPIView):
-#     queryset  = Invoice.objects.all()
-#     serializer_class = InvoiceSerializer
-
-#     def post(self, request, *args, **kwargs):
-#         self.serializer_class = CreateInvoiceSerializer
-#         return self.create(request, args, kwargs)
-
-#     def get(self, request, *args, **kwargs):
-#         return self.list(request, 
-#                         args, kwargs)
-
-
-# class ProductList(mixins.ListModelMixin,mixins.CreateModelMixin, generics.GenericAPIView):
-#     queryset = Product.objects.all()
-#     serializer_class = ProductSerializer
-
-#     def post(self, request, *args, **kwargs):
-#         return self.create(request, args, kwargs)
-    
-#     def get(self, request, *args, **kwargs):
-#         return self.list(request, 
-#                         args, kwargs)
