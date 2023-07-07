@@ -14,13 +14,13 @@ class ClientSerializer(serializers.ModelSerializer):
         fields = ["id",'name', 'phone_number', "email","total_income", "pro_invoice_type_bill_count", "invoice_type_bill_count"]
 
     def get_pro_invoice_type_bill_count(self, obj : Client):
-        return Invoice.objects.filter(client_field=obj, type="pro forma").count()
+        return Invoice.objects.filter(client_field=obj, type="pro forma", is_deleted=False).count()
     
     def get_invoice_type_bill_count(self, obj : Client):
-        return Invoice.objects.filter(client_field=obj, type="facture").count()
+        return Invoice.objects.filter(client_field=obj, type="facture", is_deleted=False).count()
 
     def get_total_income(self, obj: Client):
-        return sum([invoice.amount for invoice in Invoice.objects.filter(client_field=obj, type="facture")])
+        return sum([invoice.amount for invoice in Invoice.objects.filter(client_field=obj, type="facture", is_deleted=False)])
     
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
