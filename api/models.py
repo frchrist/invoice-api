@@ -6,6 +6,15 @@ from django.db.models.signals import pre_save
 # Create your models here.
 
 
+class Client(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=225)
+    phone_number = models.CharField(max_length=200)
+    email = models.EmailField()
+
+    def __str__(self) -> str:
+        return self.name
+
 
 
 class Product(models.Model):
@@ -33,7 +42,8 @@ class ProductInInvoice(models.Model):
 
 class Invoice(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    client = models.CharField(max_length=25)
+    client = models.CharField(max_length=25, null=True, default=None)
+    client_field = models.ForeignKey(to=Client, default=None,null=True, on_delete=models.CASCADE)
     date = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     ref = models.CharField(max_length=20, default="", blank=True)

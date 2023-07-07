@@ -16,9 +16,9 @@ SECRET_KEY = 'django-insecure-t*m9i%xsb4^m-u8c!sjbpkt+&budqb++zg_y9&e39=dh6%+1sw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
-#DEBUG = True
+# DEBUG = "False"
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', "localhost"]
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', "localhost", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -134,6 +134,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:3000",
+    "http://localhost:3001",
+    "http://127.0.0.1:3001",
+
     "https://kgb-invoice.vercel.app",
     os.getenv("PRODUCTION_DOMAIN"),
 ]

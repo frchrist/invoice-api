@@ -1,6 +1,27 @@
 from rest_framework import serializers
-from .models import Product, Invoice,ProductInInvoice
+from .models import Product, Invoice,ProductInInvoice, Client
 
+class ClientSerializer(serializers.ModelSerializer):
+    """
+        Serializer for the client model
+        @Client
+    """
+    invoice_type_bill_count = serializers.SerializerMethodField()
+    pro_invoice_type_bill_count = serializers.SerializerMethodField()
+    total_income = serializers.SerializerMethodField()
+    class Meta:
+        model = Client
+        fields = ["id",'name', 'phone_number', "email","total_income", "pro_invoice_type_bill_count", "invoice_type_bill_count"]
+
+    def get_pro_invoice_type_bill_count(self, obj : Client):
+        return Invoice.objects.filter(client_field=obj, type="pro forma").count()
+    
+    def get_invoice_type_bill_count(self, obj : Client):
+        return Invoice.objects.filter(client_field=obj, type="facture").count()
+
+    def get_total_income(self, obj: Client):
+        return sum([invoice.amount for invoice in Invoice.objects.filter(client_field=obj, type="facture")])
+    
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
@@ -15,7 +36,6 @@ class WriteProductSerializer(serializers.ModelSerializer):
 
 class ProductInInvoiceSerializer(serializers.ModelSerializer):
     product = ProductSerializer()
-    #product = serializers.SlugRelatedField(queryset=Product.objects.all(), slug_field="id")
     class Meta:
         model = ProductInInvoice
         fields = "__all__"
@@ -26,18 +46,13 @@ class MySer(serializers.Serializer):
     id = serializers.CharField(max_length=200)
 
 
-# class ProductSendToInvoiceSerializer(serializers.Serializer):
-    # id = serializers.CharField(max_length=200)
-    # # name = serializers.CharField(max_length=200)
-    # quantity = serializers.IntegerField()
-    # price = serializers.ReadOnlyField()
-    # description = serializers.ReadOnlyField()
-    # unite = serializers.ReadOnlyField()
 
 
 
 class PostInvoiceSerializer(serializers.Serializer):
-    client = serializers.CharField(max_length=100)
+    # client = serializers.CharField(max_length=100)
+    #String with client uuid
+    client_field =  serializers.CharField(max_length=250)
     type = serializers.CharField(max_length=100)
     product_in_invoice = MySer(many=True)
     amount = serializers.ReadOnlyField()
@@ -49,21 +64,22 @@ class PostInvoiceSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         products_data = validated_data.pop('product_in_invoice')
+        client : str = validated_data.pop("client_field")
+        client_instance : Client = Client.objects.get(id=client)
         invoice = Invoice.objects.create(**validated_data)
+        invoice.client_field = client_instance
+        invoice.save()
         for product_data in products_data:
-            # pro_data = product_data.get("product")
-            print(product_data)
             pro = Product.objects.get(id=product_data.get("id"),is_deleted=False)
             product = ProductInInvoice.objects.create(product=pro, quantity=product_data.get("quantity"))
-            # quantity = product_data.get('quantity', 1)
             invoice.product_in_invoice.add(product)
-            # InvoiceProduct.objects.create(invoice=invoice, product=product, quantity=quantity)
         return invoice
 
 
 
 class InvoiceSerializer(serializers.Serializer):
     client = serializers.CharField(max_length=100)
+    client_field = ClientSerializer()
     type = serializers.CharField(max_length=100)
     id = serializers.ReadOnlyField()
     product_in_invoice = ProductInInvoiceSerializer(many=True)
@@ -78,32 +94,3 @@ class InvoiceSerializer(serializers.Serializer):
 
 
 
-
-# class InvoiceSerializer(serializers.ModelSerializer):
-#     product_in_invoice = ProductSendToInvoiceSerializer(many=True)
-#     # product = WriteProductSerializer(many=True)
-
-#     amount = serializers.ReadOnlyField()
-#     ref = serializers.ReadOnlyField()
-#     is_deleted = serializers.ReadOnlyField()
-#     # extra_kwargs = {"product" : {"write_only" : True}}
-
-
-
-#     class Meta:
-#         model = Invoice
-#         fields = '__all__'
-#         # read_only_fields  = ("product_in_invoice",)
-
-#     def create(self, validated_data):
-#         products_data = validated_data.pop('product_in_invoice')
-#         invoice = Invoice.objects.create(**validated_data)
-#         for product_data in products_data:
-#             pro_data = product_data.get("product")
-#             print(pro_data.get("id"))
-#             pro = Product.objects.get(name=pro_data.get("name"), is_deleted=False)
-#             product = ProductInInvoice.objects.create(product=pro, quantity=product_data.get("quantity"))
-#             # quantity = product_data.get('quantity', 1)
-#             invoice.product_in_invoice.add(product)
-#             # InvoiceProduct.objects.create(invoice=invoice, product=product, quantity=quantity)
-#         return invoice

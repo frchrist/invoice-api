@@ -3,3 +3,4 @@
 /.venv/
 *.sqlite3
 *.pyc
+config.settings.py
