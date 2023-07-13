@@ -36,6 +36,7 @@ class WriteProductSerializer(serializers.ModelSerializer):
 
 class ProductInInvoiceSerializer(serializers.ModelSerializer):
     product = ProductSerializer()
+    price = serializers.CharField(max_length=200)
     class Meta:
         model = ProductInInvoice
         fields = "__all__"
@@ -44,14 +45,13 @@ class ProductInInvoiceSerializer(serializers.ModelSerializer):
 class MySer(serializers.Serializer):
     quantity = serializers.IntegerField()
     id = serializers.CharField(max_length=200)
+    price = serializers.CharField(max_length=200)
 
 
 
 
 
 class PostInvoiceSerializer(serializers.Serializer):
-    # client = serializers.CharField(max_length=100)
-    #String with client uuid
     client_field =  serializers.CharField(max_length=250)
     type = serializers.CharField(max_length=100)
     product_in_invoice = MySer(many=True)
@@ -71,6 +71,11 @@ class PostInvoiceSerializer(serializers.Serializer):
         invoice.save()
         for product_data in products_data:
             pro = Product.objects.get(id=product_data.get("id"),is_deleted=False)
+            if(float(pro.price) != float(product_data.get("price"))):
+                new_product_price = Product.objects.create(name=pro.name, unite=pro.unite, price = float(product_data.get("price")))
+                new_product_price.save()
+                pro = new_product_price
+
             product = ProductInInvoice.objects.create(product=pro, quantity=product_data.get("quantity"))
             invoice.product_in_invoice.add(product)
         return invoice
